@@ -21,13 +21,15 @@ public class Helpers {
     }
 
     /**
-     * Generate a random integer in a range
-     * @param min the minimum integer to randomly generate
-     * @param max the maximum integer to randomly generate
-     * @return the randomly generated integer
+     * To generate a random number between 2 values.
+     * @param min an int, smallest possible value
+     * @param max an int, largest possible value
+     * @return an int between min and max
      */
     public static int randint(int min, int max) {
-        return (int)(Math.random() * (max - min + 1)) + min;
-//        return new Random().nextInt(max - min + 1) + min;
+        // I asked ChatGPT for help
+        Random random = new Random();
+        int rand = random.nextInt(max - min + 1) + min;
+        return rand;
     }
 }

@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"edu.kirkwood.shared"},{"l":"edu.kirkwood.week01"},{"l":"edu.kirkwood.week02"}];updateSearchResults();
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"edu.kirkwood.exams"},{"l":"edu.kirkwood.pair_programming"},{"l":"edu.kirkwood.shared"},{"l":"edu.kirkwood.week01"},{"l":"edu.kirkwood.week02"},{"l":"edu.kirkwood.week03"},{"l":"edu.kirkwood.week04"},{"l":"edu.kirkwood.week05"}];updateSearchResults();

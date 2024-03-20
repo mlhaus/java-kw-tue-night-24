@@ -7,6 +7,30 @@ import static org.junit.jupiter.api.Assertions.*;
 class HelpersTest {
 
     @Test
+    void diceRoll() {
+        int min = 1;
+        int max = 6;
+        for(int i = 0; i < 100; i++) {
+            int rand = Helpers.randint(min, max);
+            if(rand < min || rand > max) {
+                fail(rand + " is out of range");
+            }
+        }
+    }
+
+    @Test
+    void randNegatives() {
+        int min = -100;
+        int max = -1;
+        for(int i = 0; i < 1000; i++) {
+            int rand = Helpers.randint(min, max);
+            if(rand < min || rand > max) {
+                fail(rand + " is out of range");
+            }
+        }
+    }
+
+    @Test
     void round() {
         String expected = "3.14";
         String actual = Helpers.round(3.14159, 2);
