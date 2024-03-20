@@ -13,9 +13,9 @@ public class String1 {
 
 
     /**
-     * @param out a string length 4, such as "<<>>"
+     * @param out a string length 4, such as "&lt;&lt;&gt;&gt;"
      * @param word - a string
-     * @return a new string where the word is in the middle of the out string, e.g. "<<word>>"
+     * @return a new string where the word is in the middle of the out string, e.g. "&lt;&lt;word&gt;&gt;"
      */
     public String makeOutWord(String out, String word) {
         String out1 = out.substring(0, 2); // return first 2 chars

@@ -7,16 +7,19 @@ import java.util.Scanner;
 
 public class GuessingGame {
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        
         String answer = (char)Helpers.randint(65, 90) + "";
         System.out.println("I'm thinking of a letter between A and Z.");
         System.out.print("Can you guess it? ");
-        Scanner scanner = new Scanner(System.in);
+
 
 //        while(true) {  // Use while if you don't know how to attempts to allow
         // Use for loop when you want to specify the number of attempts
         int count;
         int attempts = 6;
-        for(count = 0; count < attempts; ) {
+        inner: for(count = 0; count < attempts; ) {
             String guess = scanner.nextLine();
             count++;
             if (guess.equalsIgnoreCase(answer)) {
