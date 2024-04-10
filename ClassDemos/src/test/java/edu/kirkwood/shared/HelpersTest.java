@@ -7,6 +7,15 @@ import static org.junit.jupiter.api.Assertions.*;
 class HelpersTest {
 
     @Test
+    void isValidDate() {
+        assertTrue(Helpers.isValidDate("4/2/2024"));
+        assertTrue(Helpers.isValidDate("04/02/2024"));
+        assertFalse(Helpers.isValidDate("pizza"));
+        assertFalse(Helpers.isValidDate("02/30/2024"));
+        assertFalse(Helpers.isValidDate("April 2, 2024"));
+    }
+
+    @Test
     void diceRoll() {
         int min = 1;
         int max = 6;

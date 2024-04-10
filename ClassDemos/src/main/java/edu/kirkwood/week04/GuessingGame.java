@@ -8,36 +8,45 @@ import java.util.Scanner;
 public class GuessingGame {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-
-        
-        String answer = (char)Helpers.randint(65, 90) + "";
-        System.out.println("I'm thinking of a letter between A and Z.");
-        System.out.print("Can you guess it? ");
-
-
-//        while(true) {  // Use while if you don't know how to attempts to allow
-        // Use for loop when you want to specify the number of attempts
+        int lowest = Integer.MAX_VALUE;
         int count;
-        int attempts = 6;
-        inner: for(count = 0; count < attempts; ) {
-            String guess = scanner.nextLine();
-            count++;
-            if (guess.equalsIgnoreCase(answer)) {
-                System.out.println("Correct! You got it in " + count + (count == 1 ? " guess." : " guesses."));
-                break;
-            } else {
-                if (guess.compareToIgnoreCase(answer) < 0) {
-                    System.out.print("You guessed too low. ");
+        outer: while(true) {
+            String answer = (char)Helpers.randint(65, 90) + "";
+            System.out.println(answer);
+            System.out.println("I'm thinking of a letter between A and Z.");
+            int attempts = 6;
+            boolean correct = false;
+            inner:
+            for (count = 0; count < attempts; ) {
+                System.out.print("Guess: ");
+                String guess = scanner.nextLine();
+                count++;
+                if (guess.equalsIgnoreCase(answer)) {
+                    System.out.println("Correct! You got it in " + count + (count == 1 ? " guess." : " guesses."));
+                    correct = true;
+                    break inner;
                 } else {
-                    System.out.print("You guessed too high. ");
+                    if (guess.compareToIgnoreCase(answer) < 0) {
+                        System.out.print("You guessed too low. ");
+                    } else {
+                        System.out.print("You guessed too high. ");
+                    }
+                    System.out.println("You have " + (attempts - count) + " attempts remaining.");
                 }
-                int remaining = (attempts - count);
-                System.out.println("You have " + remaining + (remaining != 1 ? " attempts" : " attempt") + " remaining.");
+            }
+            if (!correct) {
+                System.out.println("Sorry, the correct letter was " + answer + ".");
+            }
+            if(count < lowest) {
+                lowest = count;
+                System.out.println("You got your best score");
+            }
+            System.out.print("Press Q to quit.");
+            String quit = scanner.nextLine();
+            if(quit.equalsIgnoreCase("q")) {
+                break outer;
             }
         }
-        if(count == 6) {
-            System.out.println("Sorry, the correct letter was " + answer + ".");
-        }
-        // To do: Save the users score and compare it to other scores
+        System.out.println("Your best score was " + lowest);
     }
 }

@@ -1,9 +1,68 @@
 package edu.kirkwood.shared;
 
 import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.time.format.FormatStyle;
+import java.util.Locale;
 import java.util.Random;
 
 public class Helpers {
+    public static final DateTimeFormatter DATE_INPUT_FORMAT = DateTimeFormatter.ofPattern("M/d/yyyy", Locale.ENGLISH);
+    public static final DateTimeFormatter DATE_OUTPUT_FORMAT = DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL);
+
+    /**
+     * Determines if a string is a valid date
+     * @param date a String representing a possible date
+     * @return a boolean, true if the String matches the date regular expression
+     */
+    public static boolean isValidDate(String date) {
+        return Validators.datePattern.matcher(date).matches();
+    }
+
+    public static String formatDate(LocalDate date) {
+        return date.format(DATE_OUTPUT_FORMAT);
+    }
+
+    public static LocalDate getDateFromString(String date) {
+        if(isValidDate(date)) {
+            try {
+                return LocalDate.parse(date, DATE_INPUT_FORMAT);
+            } catch(DateTimeParseException e) {
+                return null;
+            }
+        }
+        return null;
+    }
+
+    public static boolean isTodayOrFuture(LocalDate date) {
+        return !date.isBefore(LocalDate.now());
+    }
+
+    public static boolean areDatesInOrder(LocalDate date1, LocalDate date2) {
+        return date1.compareTo(date2) <= 0;
+    }
+
+    public static LocalDate addDays(LocalDate date, int numDays) {
+        return date.plusDays(numDays);
+    }
+
+    public static boolean isValidString(String str) {
+        return str != null && !str.equals("");
+    }
+
+    public static boolean isNumeric(String str) {
+        return str.matches("[0-9]+");
+    }
+
+    public static String toCurrency(double amt) {
+        NumberFormat formatter = NumberFormat.getCurrencyInstance();
+        return formatter.format(amt);
+    }
+
+
     /**
      * Formats a double value to a string with a specified number of decimal places.
      * @param num The double value to be formatted 
