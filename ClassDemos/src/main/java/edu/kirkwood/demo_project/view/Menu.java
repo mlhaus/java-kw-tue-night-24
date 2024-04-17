@@ -12,7 +12,5 @@ public interface Menu {
     // What is an abstract method?
     // An abstract method declares the method signature, without a body
     // Here is an example of an abstract method
-    static void displayMenu(Scanner scanner){
-        // will be implemented by child classes
-    }
+    void displayMenu(Scanner scanner);
 }

@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class HotelApplication {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        MainMenu.displayMenu(scanner);
+        new MainMenu().displayMenu(scanner);
         System.out.println("Good bye!");
     }
 }

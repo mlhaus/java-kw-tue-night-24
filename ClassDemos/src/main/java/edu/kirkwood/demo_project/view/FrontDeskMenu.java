@@ -6,7 +6,7 @@ import edu.kirkwood.shared.UserInput;
 import java.util.Scanner;
 
 public class FrontDeskMenu implements Menu {
-    public static void displayMenu(Scanner scanner) {
+    public void displayMenu(Scanner scanner) {
         String[] menuItems = {"New reservation", "New customer", "Reservation Lookup by customer", "Exit"};
         while(true) {
             UIUtility.printMenu("Front Desk Menu", menuItems);
@@ -23,7 +23,6 @@ public class FrontDeskMenu implements Menu {
                     break;
                 case 4:
                     // go back to main menu
-//                    MainMenu.displayMenu(scanner);
                     return;
             }
         }

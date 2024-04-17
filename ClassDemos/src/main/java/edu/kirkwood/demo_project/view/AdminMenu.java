@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class AdminMenu implements Menu {
 
-    public static void displayMenu(Scanner scanner) {
+    public void displayMenu(Scanner scanner) {
         String[] menuItems = {"View all rooms", "View all customers", "View all reservations", "Add new room", "Exit"};
         while(true) {
             UIUtility.printMenu("Admin Menu", menuItems);
@@ -27,7 +27,6 @@ public class AdminMenu implements Menu {
                     break;
                 case 5:
                     // go back to main menu
-//                    MainMenu.displayMenu(scanner);
                     return;
             }
         }
