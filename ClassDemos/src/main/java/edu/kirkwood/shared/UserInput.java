@@ -10,6 +10,44 @@ import java.util.Scanner;
 
 public class UserInput {
 
+    public static double getDouble(String prompt, Scanner scanner) {
+        return getDouble(prompt, scanner, -Double.MAX_VALUE, Double.MAX_VALUE);
+    }
+
+    public static double getDouble(String prompt, Scanner scanner, double min) {
+        return getDouble(prompt, scanner, min, Double.MAX_VALUE);
+    }
+    public static double getDouble(String prompt, Scanner scanner, double min, double max) {
+        double result = 0;
+        String minMax = ""; // format a min/max prompt
+        // Check if min parameter is set
+        if(min != -Double.MAX_VALUE && max == Double.MAX_VALUE) {
+            minMax = String.format(" [min %.1f]", min);
+        }
+        // Check if min and max are set
+        else if(min != -Double.MAX_VALUE && max != Double.MAX_VALUE) {
+            minMax = String.format(" [between %.1f and %.1f]", min, max);
+        }
+        while(true) {
+            System.out.print(prompt + minMax + ": ");
+            // try-catch block
+            try {
+                String resultStr = scanner.nextLine();
+                result = Double.parseDouble(resultStr);
+                if(result < min) {
+                    UIUtility.displayWarning("Value too low");
+                } else if(result > max) {
+                    UIUtility.displayWarning("Value too high");
+                } else {
+                    break;
+                }
+            } catch (NumberFormatException e) {
+                UIUtility.displayMessage("Invalid number");
+            }
+        }
+        return result;
+    }
+
     public static int getInt(String prompt, Scanner scanner) {
         return getInt(prompt, scanner, Integer.MIN_VALUE, Integer.MAX_VALUE);
     }
@@ -100,6 +138,10 @@ public class UserInput {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        System.out.println(getDouble("Current temperature", scanner));
+        System.out.println(getDouble("Current temperature", scanner, 0));
+        System.out.println(getDouble("Current temperature", scanner, 1, 100));
+
         System.out.println(getString("Middle name", scanner));
         System.out.println(getString("First name", scanner, true));
         System.out.println(getInt("Current temperature", scanner));

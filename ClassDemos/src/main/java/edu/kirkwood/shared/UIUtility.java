@@ -1,5 +1,6 @@
 package edu.kirkwood.shared;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class UIUtility {
@@ -13,11 +14,15 @@ public class UIUtility {
         printLine();
     }
 
-    public static void printLine() {
-        for(int i = 0; i < 50; i++) {
+    public static void printLine(int length) {
+        for(int i = 0; i < length; i++) {
             System.out.print("-");
         }
         System.out.println();
+    }
+
+    public static void printLine() {
+        printLine(50);
     }
 
     public static void pressEnterToContinue(Scanner scanner) {

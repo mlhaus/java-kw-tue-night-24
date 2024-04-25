@@ -1,5 +1,8 @@
 package edu.kirkwood.demo_project.view;
 
+import edu.kirkwood.demo_project.model.Reservation;
+import edu.kirkwood.demo_project.model.Room;
+import edu.kirkwood.demo_project.model.User;
 import edu.kirkwood.shared.UIUtility;
 import edu.kirkwood.shared.UserInput;
 
@@ -15,12 +18,18 @@ public class AdminMenu implements Menu {
             switch(choice) {
                 case 1:
                     // view all rooms
+                    UIUtility.displayMessage(menuItems[0]);
+                    Room.printTable();
                     break;
                 case 2:
                     // view all customers
+                    UIUtility.displayMessage(menuItems[1]);
+                    User.printTable();
                     break;
                 case 3:
                     // view all reservations
+                    UIUtility.displayMessage(menuItems[2]);
+                    Reservation.printTable();
                     break;
                 case 4:
                     // add new room
@@ -29,6 +38,7 @@ public class AdminMenu implements Menu {
                     // go back to main menu
                     return;
             }
+            UIUtility.pressEnterToContinue(scanner);
         }
     }
 }

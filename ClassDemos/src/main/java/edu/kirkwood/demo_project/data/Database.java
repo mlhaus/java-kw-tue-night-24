@@ -6,14 +6,14 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class Database {
+public abstract class Database {
     public static Connection getConnection() {
         String driver = "com.mysql.cj.jdbc.Driver";
         try {
-            // Does the driver exist?
+// Does the driver exist?
             Class.forName(driver);
 //            System.out.println("Driver found");
-        } catch(ClassNotFoundException e) {
+        } catch (ClassNotFoundException e) {
 //            System.out.println("Driver not found");
             return null;
         }
@@ -25,7 +25,7 @@ public class Database {
         try {
             connection = DriverManager.getConnection(connectionString, username, password);
 //            System.out.println("Connection successful");
-        }catch (SQLException e) {
+        } catch (SQLException e) {
             System.out.println(e.getMessage());
 //            System.out.println("Connection failed");
         }
