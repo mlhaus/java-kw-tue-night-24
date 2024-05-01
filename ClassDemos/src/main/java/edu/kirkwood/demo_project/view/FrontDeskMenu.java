@@ -1,5 +1,6 @@
 package edu.kirkwood.demo_project.view;
 
+import edu.kirkwood.demo_project.controller.UserService;
 import edu.kirkwood.shared.UIUtility;
 import edu.kirkwood.shared.UserInput;
 
@@ -17,6 +18,7 @@ public class FrontDeskMenu implements Menu {
                     break;
                 case 2:
                     // new customer
+                    new UserService().create(scanner);
                     break;
                 case 3:
                     // reservation lookup
@@ -25,6 +27,7 @@ public class FrontDeskMenu implements Menu {
                     // go back to main menu
                     return;
             }
+            UIUtility.pressEnterToContinue(scanner);
         }
     }
 }

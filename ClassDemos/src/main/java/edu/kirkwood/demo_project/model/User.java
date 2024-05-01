@@ -14,7 +14,6 @@ public class User {
 
     // constructor - used to instantiate User objects
     public User() {
-        
     }
     
     public User(int userId, String firstName, String lastName, String email) {
@@ -39,6 +38,23 @@ public class User {
     public String getEmail() {
         return email;
     }
+    
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+    
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+    
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+    
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    
 
     public static void printTableHeader() {
         UIUtility.printLine(78);

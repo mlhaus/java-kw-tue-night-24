@@ -8,6 +8,8 @@ import java.util.InputMismatchException;
 import java.util.Locale;
 import java.util.Scanner;
 
+import static edu.kirkwood.shared.UIUtility.displayWarning;
+
 public class UserInput {
 
     public static double getDouble(String prompt, Scanner scanner) {
@@ -35,9 +37,9 @@ public class UserInput {
                 String resultStr = scanner.nextLine();
                 result = Double.parseDouble(resultStr);
                 if(result < min) {
-                    UIUtility.displayWarning("Value too low");
+                    displayWarning("Value too low");
                 } else if(result > max) {
-                    UIUtility.displayWarning("Value too high");
+                    displayWarning("Value too high");
                 } else {
                     break;
                 }
@@ -73,9 +75,9 @@ public class UserInput {
                 String resultStr = scanner.nextLine();
                 result = Integer.parseInt(resultStr);
                 if(result < min) {
-                    UIUtility.displayWarning("Value too low");
+                    displayWarning("Value too low");
                 } else if(result > max) {
-                    UIUtility.displayWarning("Value too high");
+                    displayWarning("Value too high");
                 } else {
                     break;
                 }
@@ -96,7 +98,7 @@ public class UserInput {
             System.out.print(prompt + (required ? " *" : "") + ": ");
             result = scanner.nextLine().trim();
             if(required && !Helpers.isValidString(result)) {
-                UIUtility.displayWarning("Input required");
+                displayWarning("Input required");
             } else {
                 break;
             }
@@ -133,6 +135,19 @@ public class UserInput {
             }
         }
         return result;
+    }
+
+    public static String getEmail(String prompt, Scanner scanner) {
+        String email = null;
+        while (true) {
+            email = getString(prompt, scanner);
+            if (!Helpers.isValidEmail(email)) {
+                displayWarning("Invalid email");
+            } else {
+                break;
+            }
+        }
+        return email;
     }
 
 

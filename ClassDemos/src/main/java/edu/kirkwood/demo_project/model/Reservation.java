@@ -25,15 +25,17 @@ public class Reservation {
     }
 
     public static void printTableHeader() {
-        UIUtility.printLine(79);
-        System.out.printf("| %-20s | %-11s | %-12s | %-10s | %-10s |\n",
+        UIUtility.printLine(113);
+        System.out.printf("| %-20s | %-11s | %-12s | %-27s | %-27s |\n",
                 "Customer Name", "Room Number", "Room Type", "Check In", "Check Out");
-        UIUtility.printLine(79);
+        UIUtility.printLine(113);
     }
 
     public String toString() {
-        return String.format("| %-20s | %11s | %-12s | %-10s | %10s |",
-                customer.getFirstName() + " " + customer.getLastName(), room.getRoomNumber(), room.getRoomType(), checkInDate, checkOutDate);
+        return String.format("| %-20s | %11s | %-12s | %27s | %27s |",
+                customer.getFirstName() + " " + customer.getLastName(),
+                room.getRoomNumber(), room.getRoomType(),
+                Helpers.formatDate(checkInDate), Helpers.formatDate(checkOutDate));
     }
 
     public static void printTable() {

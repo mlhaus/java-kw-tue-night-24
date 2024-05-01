@@ -8,6 +8,7 @@ import java.time.format.DateTimeParseException;
 import java.time.format.FormatStyle;
 import java.util.Locale;
 import java.util.Random;
+import java.util.regex.Pattern;
 
 public class Helpers {
     public static final DateTimeFormatter DATE_INPUT_FORMAT = DateTimeFormatter.ofPattern("M/d/yyyy", Locale.ENGLISH);
@@ -22,6 +23,10 @@ public class Helpers {
         return Validators.datePattern.matcher(date).matches();
     }
 
+    public static boolean isValidEmail(String email) {
+        return Validators.emailRegex.matcher(email).matches();
+    }
+    
     public static String formatDate(LocalDate date) {
         return date.format(DATE_OUTPUT_FORMAT);
     }
